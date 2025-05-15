@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this ->call(ObservationSeeder::class);
         $this ->call(TypeActivitySeeder::class);
 
+
         //crear 1 usuario de rol administrador
         User::factory()->create([
             'role_id' => 1
@@ -47,5 +48,9 @@ class DatabaseSeeder extends Seeder
         Technician::factory(1)->create(); 
 
         $this -> call(ActivitySeeder::class);
+
+        //seeders de prueba
+        //$this -> call(TestTechnicianSeeder::class);
+        $this -> call(TestActivitySeeder::class);
     }
 }
