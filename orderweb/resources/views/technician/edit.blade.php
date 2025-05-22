@@ -5,28 +5,33 @@
 
 <div class="row">
     <div class="col-lg-12 mb-4">
-        <form action="" method="post">
+        <form action="{{ route('technician.update', $technician['id']) }}" method="post">
             @csrf
+            @method('PUT')
             <div class="row form-group">
                 <div class="col-lg-6 mb-4">
                     <label for="name">Nombre</label>
-                    <input type="text" class="form-control" name="name" id="name" required>
+                    <input type="text" class="form-control" name="name" id="name" required value="{{ $technician['name'] }}">
                 </div>
                 <div class="col-lg-6 mb-4">
                     <label for="document">Documento</label>
-                    <input type="number" class="form-control" name="document" id="document" required>
+                    <input type="number" class="form-control" name="document" id="document" required value="{{ $technician['document'] }}">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-lg-6 mb-4">
                     <label for="phone">Teléfono</label>
-                    <input type="text" class="form-control" name="phone" id="phone" required>
+                    <input type="text" class="form-control" name="phone" id="phone" required value="{{ $technician['phone'] }}">
                 </div>
                 <div class="col-lg-6 mb-4">
                     <label for="speciality">Especialidad</label>
-                    <select name="speciality" id="speciality" class="form-control">
-                        <option value="">Seleccione</option>
-                    </select>
+                    <input list="specialities-list" class="form-control" name="speciality" id="speciality" required value="{{ $technician['speciality'] }}">
+                    <datalist id="specialities-list">
+                        <option>Instalación de redes</option>
+                        <option>Construcción</option>
+                        <option>Lectura de redes</option>
+                        <option>Plomería</option>
+                    </datalist>
                 </div>
             </div>
             <div class="row">

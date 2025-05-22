@@ -1,11 +1,11 @@
 @extends('templates.base')
-@section('title', 'Crear tecnico')
-@section('header', 'Crear tecnico')
+@section('title', 'Crear técnico')
+@section('header', 'Crear técnico')
 @section('content')
 
 <div class="row">
     <div class="col-lg-12 mb-4">
-        <form action="" method="post">
+        <form action="{{ route('technician.store') }}" method="post">
             @csrf
             <div class="row form-group">
                 <div class="col-lg-6 mb-4">
@@ -24,9 +24,13 @@
                 </div>
                 <div class="col-lg-6 mb-4">
                     <label for="speciality">Especialidad</label>
-                    <select name="speciality" id="speciality" class="form-control">
-                        <option value="">Seleccione</option>
-                    </select>
+                    <input list="specialities-list" class="form-control" name="speciality" id="speciality" required>
+                    <datalist id="specialities-list">
+                        <option>Instalación de redes</option>
+                        <option>Construcción</option>
+                        <option>Lectura de redes</option>
+                        <option>Plomería</option>
+                    </datalist>
                 </div>
             </div>
             <div class="row">
