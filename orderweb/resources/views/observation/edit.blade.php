@@ -2,6 +2,7 @@
 @section('title', 'Editar observaciones')
 @section('header', 'Editar observaciones')
 @section('content')
+    @include('templates.messages')
 
 <div class="row">
     <div class="col-lg-12 mb-4">

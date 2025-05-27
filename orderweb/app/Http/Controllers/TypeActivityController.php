@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\TypeActivity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TypeActivityController extends Controller
 {
+    private $rules = [
+        'description' => 'required|string|min:3|max:100'
+    ];
+
+    private $traduccionAttributes = [
+        'description' => 'descripción'
+    ];
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +37,13 @@ class TypeActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames(($this->traduccionAttributes));
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('type_activity.create')->withInput()->withErrors($errors);
+        }
         $typeActivities = TypeActivity::create($request->all());
         session()->flash('message', 'Tipo de actividad creada exitosamente');
         return redirect()->route('type_activity.index');
@@ -65,6 +79,14 @@ class TypeActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames(($this->traduccionAttributes));
+        if($validator->fails())
+        {
+            $errors = $validator->errors();
+            return redirect()->route('type_activity.edit', $id)->withInput()->withErrors($errors);
+        }
+
         $typeActivity = TypeActivity::find($id);
         if($typeActivity) //si existe
         {
