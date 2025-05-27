@@ -28,9 +28,9 @@ class Order extends Model
         return $this ->belongsTo(Observation::class, 'observation_id');
     }
 
-    public function activies()
+    public function activities()
     {
-        return $this ->belongsToMany(Activity::class);
-        /*return $this ->belongsToMany(Activity::class, 'order_activity', 'order:id', 'activity_id');*/ //otra forma de hacerlo
+        //return $this ->belongsToMany(Activity::class);
+        return $this ->belongsToMany(Activity::class, 'order_activity', 'order_id', 'activity_id');
     }
 }
