@@ -6,7 +6,7 @@
         <div class="card-block">
             <div class="row align-items-center m-b-20">
                 <div class="col-lg-6 text-center">
-                    <img src="{{ asset('images/denied.png') }}" alt="404" class="img-fluid"
+                    <img src="{{ asset('img/denied.png') }}" alt="404" class="img-fluid"
                     style="width: 50%; height: auto;">
                 </div>
                 <div class="col-lg-6 text-center">

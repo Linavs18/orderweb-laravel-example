@@ -40,7 +40,7 @@ Route::middleware('auth')->prefix('auth')->group(function(){
     Route::get('/logout', [AuthController::class, 'logout']) -> name('auth.logout');
 });
 
-Route::middleware('auth')->prefix('causal')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('causal')->group(function(){
     Route::get('/index', [CausalController::class, 'index'])-> name('causal.index');
     Route::get('/create', [CausalController::class, 'create'])-> name('causal.create');
     Route::get('/edit/{id}', [CausalController::class, 'edit'])-> name('causal.edit');
@@ -49,7 +49,7 @@ Route::middleware('auth')->prefix('causal')->group(function(){
     Route::get('/destroy/{id}', [CausalController::class, 'destroy'])-> name('causal.destroy');
 });
 
-Route::middleware('auth')->prefix('observation')-> group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('observation')-> group(function(){
     Route::get('/index', [ObservationController::class, 'index'])-> name('observation.index');
     Route::get('/create', [ObservationController::class, 'create'])-> name('observation.create');
     Route::get('/edit/{id}', [ObservationController::class, 'edit'])-> name('observation.edit');
@@ -58,7 +58,7 @@ Route::middleware('auth')->prefix('observation')-> group(function(){
     Route::get('/destroy/{id}', [ObservationController::class, 'destroy'])-> name('observation.destroy');
 });
 
-Route::middleware('auth')->prefix('type_activity')-> group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('type_activity')-> group(function(){
     Route::get('/index', [TypeActivityController::class, 'index'])-> name('type_activity.index');
     Route::get('/create', [TypeActivityController::class, 'create'])-> name('type_activity.create');
     Route::get('/edit/{id}', [TypeActivityController::class, 'edit'])-> name('type_activity.edit');
@@ -67,7 +67,7 @@ Route::middleware('auth')->prefix('type_activity')-> group(function(){
     Route::get('/destroy/{id}', [TypeActivityController::class, 'destroy'])-> name('type_activity.destroy');
 });
 
-Route::middleware('auth')->prefix('technician')-> group(function(){
+Route::middleware(['auth', 'can:supervisor'])->prefix('technician')-> group(function(){
     Route::get('/index', [TechnicianController::class, 'index'])-> name('technician.index');
     Route::get('/create', [TechnicianController::class, 'create'])-> name('technician.create');
     Route::get('/edit/{id}', [TechnicianController::class, 'edit'])-> name('technician.edit');
@@ -76,7 +76,7 @@ Route::middleware('auth')->prefix('technician')-> group(function(){
     Route::get('/destroy/{id}', [TechnicianController::class, 'destroy'])-> name('technician.destroy');
 });
 
-Route::middleware('auth')->prefix('activity')-> group(function(){
+Route::middleware(['auth', 'can:admin-supervisor'])->prefix('activity')-> group(function(){
     Route::get('/index', [ActivityController::class, 'index'])-> name('activity.index');
     Route::get('/create', [ActivityController::class, 'create'])-> name('activity.create');
     Route::get('/edit/{id}', [ActivityController::class, 'edit'])-> name('activity.edit');
@@ -85,7 +85,7 @@ Route::middleware('auth')->prefix('activity')-> group(function(){
     Route::get('/destroy/{id}', [ActivityController::class, 'destroy'])-> name('activity.destroy');
 });
 
-Route::middleware('auth')->prefix('order')-> group(function(){
+Route::middleware(['auth', 'can:admin-supervisor'])->prefix('order')-> group(function(){
     Route::get('/index', [OrderController::class, 'index'])-> name('order.index');
     Route::get('/create', [OrderController::class, 'create'])-> name('order.create');
     Route::get('/edit/{id}', [OrderController::class, 'edit'])-> name('order.edit');

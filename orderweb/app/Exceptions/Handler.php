@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
         }
         
         if ($e instanceof UnauthorizedHttpException) {
-            return response()->view('errors.404', [], 404);
+            return response()->view('errors.403', [], 403);
         }
 
         return parent::render($request, $e);
