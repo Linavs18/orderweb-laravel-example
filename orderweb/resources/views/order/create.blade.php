@@ -22,10 +22,11 @@
                 <div class="row form-group">
                     <div class="col-lg-4 mb-4">
                         <label for="city">Ciudad</label>
-                        <select name="causal" id="causal" class="form-control" value="{{ old('city') }}">
+                        <select name="city" id="city" class="form-control" required value="{{ old('city') }}">
                             @foreach ($cities as $city)
-                            <option value="{{ $city['value'] }}" {{ old('city')==$city['name'] ? 'selected' : '' }}>{{Add commentMore actions
-                                $city['name'] }}</option>
+                                <option value="{{ $city['value'] }}" @if(old('city') == $city['name']) selected @endif>
+                                    {{ $city['name'] }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

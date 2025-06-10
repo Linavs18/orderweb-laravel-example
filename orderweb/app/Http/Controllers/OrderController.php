@@ -30,11 +30,11 @@ class OrderController extends Controller
         'observation_id' => 'observación id'
     ];
 
-    private $cities = [
-                ['name' => 'TULUÁ', 'value' => 'TULUA'],
-                ['name' => 'CALI', 'value' => 'CALI'],
-                ['name' => 'BUGA', 'value' => 'BUGA'],
-                ['name' => 'PALMIRA', 'value' => 'PALMIRA']
+     private $cities = [
+        ['name' => 'TULUA', 'value' => 'TULUA'],
+        ['name' => 'CALI', 'value' => 'CALI'],
+        ['name' => 'BUGA', 'value' => 'BUGA'],
+        ['name' => 'PALMIRA', 'value' => 'PALMIRA']
     ];
     /**
      * Display a listing of the resource.
@@ -53,8 +53,8 @@ class OrderController extends Controller
     {
         $causals = Causal::all();
         $observations = Observation::all();
-        $cities = $this->cities;
-        return view('order.create', compact('causals', 'observations', 'cities'));
+        $cities = $this->cities;  
+        return view('order.create', compact('causals', 'observations', 'cities')); 
     }
 
     /**
