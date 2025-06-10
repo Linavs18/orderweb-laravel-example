@@ -100,4 +100,5 @@ Route::middleware(['auth', 'can:admin-supervisor'])->prefix('order')-> group(fun
 Route::middleware(['auth', 'can:administrador'])->prefix('reports')->group(function(){
     Route::get('/index', [ReportController::class, 'index']) -> name('reports.index');
     Route::get('/export_technicians', [ReportController::class, 'export_technicians']) -> name('reports.technicians');
+    Route::post('/export_activities_by_technician', [ReportController::class, 'export_activities_by_technician']) -> name('reports.activities_technician');
 });
